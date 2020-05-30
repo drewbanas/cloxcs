@@ -3,7 +3,7 @@
 A “*sharp yet pointless*” port of the Lox bytecode virtual machine interpreter from Bob Nystrom’s [*Crafting Interpreters*](https://craftinginterpreters.com/) book. An attempt is made to stay close to the original C code so one can refer to the Crafting Interpreters book for explanations. Similarity to the original code is emphasized over efficiency with the new implementing language. Nonetheless, to get clox working in Csharp some notable differences are unavoidable.
 
 ## Main differences from clox
--   Pointers are approximated by pairs of arrays and indices. It was decided not to  use “unsafe” features in Csharp as that would end up being used a lot. I may as  well just re-wrote it in C, but that would be less engaging (For something more straightforward, see the jlox port from Java to Csharp).
+-   Pointers are approximated by pairs of arrays and indices. It was decided not to  use “unsafe” features in Csharp as that would end up being used a lot. I may as  well just re-wrote it in C, but that would be less engaging (For something more straightforward, see the [jlox port from Java to Csharp](https://github.com/drewbanas/jloxcs)).
 -   Variables referred to by other variables have to be updated explicitly.
 -   Class names are priotized as they appear in the code more often. Hence some structs got a "_t" suffix (e.g. "Value_t" struct, since there is a "Value" class).
 -   Some structs have to be converted into classes to allow certain things in Csharp.
