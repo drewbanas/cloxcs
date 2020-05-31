@@ -43,8 +43,7 @@ namespace cloxcs
         OP_RETURN,
         OP_CLASS,
         OP_INHERIT,
-        OP_METHOD,
-        Count
+        OP_METHOD
     }
 
     public struct Chunk_t
