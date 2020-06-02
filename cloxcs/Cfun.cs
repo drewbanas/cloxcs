@@ -17,7 +17,7 @@ namespace cloxcs
         private int capacity = 16;// preallocate
 
         // vacancy management
-        private const int VACANT_COUNT = 128;
+        private const int VACANT_MAX = 128;
         private int[] vacantSlots;
         private int vacantTop;
         private bool isFragmented;
@@ -33,13 +33,13 @@ namespace cloxcs
             count = 1;
 
             // vacancy management        
-            vacantSlots = new int[VACANT_COUNT];
+            vacantSlots = new int[VACANT_MAX];
             vacantTop = 0;
             isFragmented = false;
             isTooFragmented = false;
         }
 
-        public int store(T data)
+        public int store(T entry)
         {
             count++;
             if (count >= capacity)
@@ -81,7 +81,7 @@ namespace cloxcs
                 }
             }
 
-            contents[index] = data;
+            contents[index] = entry;
             isVacant[index] = false;
             return index; // The fake "pointer"
         }
@@ -114,7 +114,7 @@ namespace cloxcs
                 vacantSlots[vacantTop++] = index;
             }
 
-            if (vacantTop == VACANT_COUNT)
+            if (vacantTop == VACANT_MAX)
                 isTooFragmented = true;
         }
 
@@ -137,10 +137,8 @@ namespace cloxcs
     {
         public static double _strtod(char[] src, int start, int length)
         {
-            string str = new string(src);
-            string numStr = str.Substring(start, length);
-            return double.Parse(numStr);
-
+            string str = new string(src, start, length);
+            return double.Parse(str);
         }
 
         public static bool _memcmp(char[] source, int start, string rest, int length)
